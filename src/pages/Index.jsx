@@ -143,6 +143,17 @@ const Index = () => {
             Game Over
           </Text>
         )}
+        <Button
+          onClick={() => {
+            setBoard(createBoard());
+            setTetromino(randomTetromino());
+            setPosition({ row: 0, col: Math.floor(COLS / 2) - 1 });
+            setGameOver(false);
+          }}
+          m={1}
+        >
+          Restart
+        </Button>
         <Box>
           <Button onClick={() => moveTetromino(-1)} leftIcon={<FaArrowLeft />} m={1}>
             Left
