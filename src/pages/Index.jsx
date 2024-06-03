@@ -127,12 +127,16 @@ const Index = () => {
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, [handleKeyPress]);
 
+  const getDisplayBoard = useCallback(() => {
+    return mergeTetromino(board, tetromino, position);
+  }, [board, tetromino, position, mergeTetromino]);
+
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
       <VStack spacing={4}>
         <Text fontSize="2xl">Tetris</Text>
         <Grid templateColumns={`repeat(${COLS}, 20px)`} gap={1}>
-          {board.map((row, rIdx) => row.map((cell, cIdx) => <GridItem key={`${rIdx}-${cIdx}`} w="20px" h="20px" bg={cell ? "blue.500" : "gray.200"} border="1px solid" />))}
+          {getDisplayBoard().map((row, rIdx) => row.map((cell, cIdx) => <GridItem key={`${rIdx}-${cIdx}`} w="20px" h="20px" bg={cell ? "blue.500" : "gray.200"} border="1px solid" />))}
         </Grid>
         {gameOver && (
           <Text fontSize="xl" color="red.500">
