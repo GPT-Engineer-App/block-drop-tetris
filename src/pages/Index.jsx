@@ -92,7 +92,7 @@ const Index = () => {
       setBoard(newBoard);
       setTetromino(randomTetromino());
       setPosition({ row: 0, col: Math.floor(COLS / 2) - 1 });
-      if (!isValidMove(newBoard, tetromino, { row: 0, col: Math.floor(COLS / 2) - 1 })) {
+      if (!isValidMove(newBoard, randomTetromino(), { row: 0, col: Math.floor(COLS / 2) - 1 })) {
         setGameOver(true);
       }
     }
